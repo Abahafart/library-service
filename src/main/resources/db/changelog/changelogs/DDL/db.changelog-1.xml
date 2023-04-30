@@ -24,4 +24,113 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="20230430112010" author="mistborn">
+        <createTable tableName="tbl_editorial" schemaName="library">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="id_tbl_editorial"/>
+            </column>
+            <column name="id_status" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_editorial" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamptz">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20230430112610" author="mistborn">
+        <createTable tableName="tbl_book" schemaName="library">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="id_tbl_book"/>
+            </column>
+            <column name="id_editorial" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_book" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isbn" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publication_date" type="timestamptz">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamptz">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20230430113210" author="mistborn">
+        <createTable tableName="tbl_author" schemaName="library">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="id_tbl_author"/>
+            </column>
+            <column name="name" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description_path" type="varchar(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthdate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamptz">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20230430114110" author="mistborn">
+        <createTable tableName="tbl_author_book" schemaName="library">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="id_tbl_author_book"/>
+            </column>
+            <column name="id_book" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_author" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_status" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20230430114410" author="mistborn">
+        <addForeignKeyConstraint baseTableName="tbl_editorial" baseColumnNames="id_status"
+                                 constraintName="fk_tbl_editorial_id_status"
+                                 referencedTableName="cat_status"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="library" baseTableSchemaName="library"/>
+        <addForeignKeyConstraint baseTableName="tbl_book" baseColumnNames="id_editorial"
+                                 constraintName="fk_tbl_book_id_editorial"
+                                 referencedTableName="tbl_editorial"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="library" baseTableSchemaName="library"/>
+        <addForeignKeyConstraint baseTableName="tbl_author_book" baseColumnNames="id_book"
+                                 constraintName="fk_tbl_author_book_id_book"
+                                 referencedTableName="tbl_book"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="library" baseTableSchemaName="library"/>
+        <addForeignKeyConstraint baseTableName="tbl_author_book" baseColumnNames="id_author"
+                                 constraintName="fk_tbl_author_book_id_author"
+                                 referencedTableName="tbl_author"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="library" baseTableSchemaName="library"/>
+        <addForeignKeyConstraint baseTableName="tbl_author_book" baseColumnNames="id_status"
+                                 constraintName="fk_tbl_author_book_id_status"
+                                 referencedTableName="cat_status"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="library" baseTableSchemaName="library"/>
+    </changeSet>
 </databaseChangeLog>
