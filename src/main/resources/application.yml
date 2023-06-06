@@ -2,10 +2,10 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     enabled: true
-    url: jdbc:postgresql://localhost:3639/libraryDb
+    url: jdbc:postgresql://localhost:3539/libraryDb
     user: library-user
     password: libraryPassPostgresql1
   r2dbc:
     password: libraryPassPostgresql1
     username: library-user
-    url: r2dbc:postgresql://localhost:3639/libraryDb
+    url: r2dbc:postgresql://localhost:3539/libraryDb

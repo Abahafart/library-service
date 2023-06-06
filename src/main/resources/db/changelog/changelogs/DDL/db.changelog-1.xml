@@ -51,7 +51,7 @@
             <column name="id_editorial" type="uuid">
                 <constraints nullable="false"/>
             </column>
-            <column name="name_book" type="varchar(70)">
+            <column name="book_name" type="varchar(70)">
                 <constraints nullable="false"/>
             </column>
             <column name="isbn" type="varchar(70)">
