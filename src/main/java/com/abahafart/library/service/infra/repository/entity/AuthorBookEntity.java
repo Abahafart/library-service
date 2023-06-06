@@ -11,17 +11,14 @@ public class AuthorBookEntity {
     @Id
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_book")
-    private BookEntity book;
+    @Column(name = "id_book")
+    private UUID book;
 
-    @ManyToOne
-    @JoinColumn(name = "id_author")
-    private AuthorEntity author;
+    @Column(name = "id_author")
+    private UUID author;
 
-    @ManyToOne
-    @JoinColumn(name = "id_status")
-    private StatusEntity status;
+    @Column(name = "id_status")
+    private UUID status;
 
     public UUID getId() {
         return id;
@@ -31,27 +28,27 @@ public class AuthorBookEntity {
         this.id = id;
     }
 
-    public BookEntity getBook() {
+    public UUID getBook() {
         return book;
     }
 
-    public void setBook(BookEntity book) {
+    public void setBook(UUID book) {
         this.book = book;
     }
 
-    public AuthorEntity getAuthor() {
+    public UUID getAuthor() {
         return author;
     }
 
-    public void setAuthor(AuthorEntity author) {
+    public void setAuthor(UUID author) {
         this.author = author;
     }
 
-    public StatusEntity getStatus() {
+    public UUID getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEntity status) {
+    public void setStatus(UUID status) {
         this.status = status;
     }
 }

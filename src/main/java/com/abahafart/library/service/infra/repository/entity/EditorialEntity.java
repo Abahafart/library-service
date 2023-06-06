@@ -12,9 +12,8 @@ public class EditorialEntity {
     @Id
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_status")
-    private StatusEntity status;
+    @Column(name = "id_status")
+    private UUID status;
 
     @Column(name = "name_editorial")
     private String nameEditorial;
@@ -33,11 +32,11 @@ public class EditorialEntity {
         this.id = id;
     }
 
-    public StatusEntity getStatus() {
+    public UUID getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEntity status) {
+    public void setStatus(UUID status) {
         this.status = status;
     }
 

@@ -12,9 +12,8 @@ public class BookEntity {
     @Id
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_editorial")
-    private EditorialEntity editorial;
+    @Column(name = "id_editorial")
+    private UUID editorial;
 
     @Column(name = "book_name")
     private String bookName;
@@ -39,11 +38,11 @@ public class BookEntity {
         this.id = id;
     }
 
-    public EditorialEntity getEditorial() {
+    public UUID getEditorial() {
         return editorial;
     }
 
-    public void setEditorial(EditorialEntity editorial) {
+    public void setEditorial(UUID editorial) {
         this.editorial = editorial;
     }
 
